@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h4 class="display-4">People</h4>
+    </div>
+    <div class="col align-self-center">
+      <%= link_to 'New Person', new_person_path, class: 'btn  btn-outline-primary pull-right' %>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <% @people.each do |person| %>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+        <div class="container-fluid person">
+          <div class="row">
+            <div class="col">
+              <%= image_tag person.send(:picture).url, class: 'img-fluid' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h4><strong><%= person.first_name %> <%= person.last_name %></strong></h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h4><small><%= person.description %></small></h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <%= link_to 'view', person, class: "btn btn-link" %>
+            </div>
+            <div class="col">
+              <%= link_to 'edit', edit_person_path(person), class: "btn btn-link" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
